@@ -9,10 +9,10 @@
     "rules": {
       "complexity": {
         "noStaticOnlyClass":"off",
-        "noThisInStatic": "off"        
+        "noThisInStatic": "off"
       },
       "suspicious": {
-        "noExplicitAny": "off"        
+        "noExplicitAny": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -27,6 +27,9 @@
     "formatter": {
       "quoteStyle":"double",
       "semicolons": "always"
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
     }
   }
 }
