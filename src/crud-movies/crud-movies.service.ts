@@ -1,4 +1,7 @@
 import { Injectable } from "@nestjs/common";
+import { plainToClass } from "class-transformer";
+import { CreateMovieDTO } from "./dto/CreateMovieDTO";
+import { UpdateMovieDTO } from "./dto/UpdateMovieDTO";
 
 @Injectable()
 export class CrudMoviesService {
@@ -7,15 +10,29 @@ export class CrudMoviesService {
 		{ title: "Movie2", director: "Director 2", year: 2002 },
 		{ title: "Movie3", director: "Director 3", year: 2003 },
 	];
-	fetchAll() {
+	fetchAll(desc = "false") {
+		if (desc === "true") {
+			return this.movies.slice().reverse();
+		}
 		return this.movies;
 	}
 
-	create(data: any) {
+	create(data: CreateMovieDTO) {
 		return this.movies.push(data);
 	}
 
 	getById(id: string) {
 		return this.movies[+id];
+	}
+
+	updateOne(id: string, data: UpdateMovieDTO) {
+		const currentMovie = this.movies[+id];
+
+		const filteredData = Object.fromEntries(Object.entries(data).filter(([_, value]) => value !== undefined));
+		const updatedMovie = { ...currentMovie, ...filteredData };
+
+		this.movies[+id] = updatedMovie as any;
+
+		return updatedMovie;
 	}
 }

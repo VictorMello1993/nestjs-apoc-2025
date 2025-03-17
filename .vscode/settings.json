@@ -23,5 +23,6 @@
           "source.organizeImports.biome": "explicit"          
     },
   },
-  "editor.defaultFormatter": "biomejs.biome"
+  "editor.defaultFormatter": "biomejs.biome",
+  "material-icon-theme.activeIconPack": "nest",
 }
