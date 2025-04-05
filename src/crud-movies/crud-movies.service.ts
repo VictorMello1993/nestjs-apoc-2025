@@ -35,4 +35,9 @@ export class CrudMoviesService {
 
 		return updatedMovie;
 	}
+
+	removeOne(id: string) {
+		const removedMovie = this.movies.splice(+id, 1);
+		return removedMovie;
+	}
 }

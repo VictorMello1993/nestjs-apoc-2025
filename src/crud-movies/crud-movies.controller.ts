@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from "@nestjs/common";
 import { CrudMoviesService } from "./crud-movies.service";
 import { CreateMovieDTO } from "./dto/CreateMovieDTO";
 import { UpdateMovieDTO } from "./dto/UpdateMovieDTO";
@@ -24,5 +24,10 @@ export class CrudMoviesController {
 	@Put(":id")
 	updateOne(@Param("id") id: string, @Body() data: UpdateMovieDTO) {
 		return this.crudFilmsService.updateOne(id, data);
+	}
+
+	@Delete(":id")
+	removeOne(@Param("id") id: string) {
+		return this.crudFilmsService.removeOne(id);
 	}
 }
