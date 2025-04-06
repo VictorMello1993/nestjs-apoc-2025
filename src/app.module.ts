@@ -5,9 +5,10 @@ import { CrudMoviesModule } from "./crud-movies/crud-movies.module";
 import { MiddlewareModule } from "./middleware/middleware.module";
 import { PipesModule } from "./pipes/pipes.module";
 import { InterceptorsModule } from './interceptors/interceptors.module';
+import { GuardsModule } from './guards/guards.module';
 
 @Module({
-	imports: [CrudMoviesModule, MiddlewareModule, PipesModule, InterceptorsModule],
+	imports: [CrudMoviesModule, MiddlewareModule, PipesModule, InterceptorsModule, GuardsModule],
 	controllers: [AppController],
 	providers: [AppService],
 })
