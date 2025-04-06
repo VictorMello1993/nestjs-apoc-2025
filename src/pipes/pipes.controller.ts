@@ -1,5 +1,6 @@
-import { Body, Controller, Post, Query, UsePipes } from "@nestjs/common";
+import { Body, Controller, Get, Post, Query, UsePipes } from "@nestjs/common";
 import { CurrencyPipe } from "./currency/currency.pipe";
+import { ValidateEmailPipe } from "./validate-email/validate-email.pipe";
 
 @Controller("pipes")
 export class PipesController {
@@ -9,5 +10,11 @@ export class PipesController {
 	pipeTransform(@Body() data: any) {
 		const { price } = data;
 		return `Preço obtido: ${price}`;
+	}
+
+	@Get("/email")
+	@UsePipes(ValidateEmailPipe)
+	pipeValidate(@Query("email") email: string) {
+		return `Email recebido: ${email}`;
 	}
 }
